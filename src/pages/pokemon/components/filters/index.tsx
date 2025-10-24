@@ -10,6 +10,8 @@ interface FiltersProps {
   setSelectedHeight: Dispatch<React.SetStateAction<string>>;
   types: { name: string; url: string }[];
   handleClearFilters: () => void;
+  setChangeSprite: Dispatch<React.SetStateAction<boolean>>;
+  changeSprite: boolean;
 }
 
 export function Filters({
@@ -21,6 +23,8 @@ export function Filters({
   setSelectedHeight,
   types,
   handleClearFilters,
+  setChangeSprite,
+  changeSprite,
 }: FiltersProps) {
   return (
     <S.FiltersContainer>
@@ -71,6 +75,9 @@ export function Filters({
         <S.ClearFiltersButton onClick={handleClearFilters}>
           Limpar Filtros
         </S.ClearFiltersButton>
+        <S.ChangeSpriteButton onClick={() => setChangeSprite(!changeSprite)}>
+          Ver {changeSprite ? "Normal" : "Shiny"}
+        </S.ChangeSpriteButton>
       </div>
     </S.FiltersContainer>
   );

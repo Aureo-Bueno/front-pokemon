@@ -8,9 +8,14 @@ import { Loading } from "../loading";
 interface ModalProps {
   selectedPokemon: PokemonDetails | null;
   setSelectedPokemon: Dispatch<React.SetStateAction<PokemonDetails | null>>;
+  changeSprite: boolean;
 }
 
-export function Modal({ selectedPokemon, setSelectedPokemon }: ModalProps) {
+export function Modal({
+  selectedPokemon,
+  setSelectedPokemon,
+  changeSprite,
+}: ModalProps) {
   const { data: pokemonDetails, isLoading } = useQuery({
     queryKey: ["pokemon-details", selectedPokemon?.name],
     queryFn: () => pokemonService.getPokemonDetails(selectedPokemon!.name),
@@ -27,7 +32,11 @@ export function Modal({ selectedPokemon, setSelectedPokemon }: ModalProps) {
               <S.ModalTitle>{pokemonDetails.name}</S.ModalTitle>
               <S.ModalImage
                 src={
-                  pokemonDetails.sprites.other["official-artwork"].front_default
+                  changeSprite
+                    ? pokemonDetails.sprites.other["official-artwork"]
+                        .front_shiny
+                    : pokemonDetails.sprites.other["official-artwork"]
+                        .front_default
                 }
                 alt={pokemonDetails.name}
               />

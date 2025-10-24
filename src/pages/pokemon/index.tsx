@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useQuery, useQueries } from "@tanstack/react-query";
 import type { PokemonDetails } from "../../types/pokemon";
 import { pokemonService } from "../../services/pokemon";
@@ -8,6 +8,7 @@ import { Filters } from "./components/filters";
 import { List } from "./components/list";
 import { Pagination } from "./components/pagination";
 import { Modal } from "./components/modal";
+import { Loading } from "./components/loading";
 
 interface TypeOption {
   name: string;
@@ -23,6 +24,7 @@ export default function PokemonList() {
   const [selectedType, setSelectedType] = useState("");
   const [selectedHeight, setSelectedHeight] = useState("");
   const [types, setTypes] = useState<TypeOption[]>([]);
+  const [changeSprite, setChangeSprite] = useState<boolean>(false);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["pokemons", offset],
@@ -76,19 +78,24 @@ export default function PokemonList() {
             setSelectedHeight={setSelectedHeight}
             types={types}
             handleClearFilters={handleClearFilters}
+            setChangeSprite={setChangeSprite}
+            changeSprite={changeSprite}
           />
 
-          <List
-            setSelectedPokemon={setSelectedPokemon}
-            data={data}
-            pokemonDetailsQueries={pokemonDetailsQueries}
-            searchName={searchName}
-            selectedType={selectedType}
-            selectedHeight={selectedHeight}
-            handleClearFilters={handleClearFilters}
-            isLoading={isLoading}
-            isLoadingDetails={isLoadingDetails}
-          />
+          <Suspense fallback={<Loading />}>
+            <List
+              setSelectedPokemon={setSelectedPokemon}
+              data={data}
+              pokemonDetailsQueries={pokemonDetailsQueries}
+              searchName={searchName}
+              selectedType={selectedType}
+              selectedHeight={selectedHeight}
+              handleClearFilters={handleClearFilters}
+              isLoading={isLoading}
+              isLoadingDetails={isLoadingDetails}
+              changeSprite={changeSprite}
+            />
+          </Suspense>
 
           <Pagination setOffset={setOffset} offset={offset} data={data} />
 
@@ -96,6 +103,7 @@ export default function PokemonList() {
             <Modal
               selectedPokemon={selectedPokemon}
               setSelectedPokemon={setSelectedPokemon}
+              changeSprite={changeSprite}
             />
           )}
         </S.Container>

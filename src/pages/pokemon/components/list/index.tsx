@@ -18,6 +18,7 @@ interface PokemonListProps {
   handleClearFilters: () => void;
   isLoading: boolean;
   isLoadingDetails: boolean;
+  changeSprite: boolean;
 }
 
 export function List({
@@ -30,6 +31,7 @@ export function List({
   handleClearFilters,
   isLoading,
   isLoadingDetails,
+  changeSprite,
 }: PokemonListProps) {
   const limit = 20;
 
@@ -85,15 +87,21 @@ export function List({
           {filteredPokemon.slice(0, limit).length > 0 ? (
             <S.PokemonGrid>
               {filteredPokemon.slice(0, limit).map((pokemon) => {
+                if (!pokemon.details) return null;
+
                 const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
-                const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+                const spriteDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+                const spriteShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonId}.png`;
 
                 return (
                   <S.PokemonCard
                     key={pokemon.name}
                     onClick={() => handlePokemonClick(pokemon.name)}
                   >
-                    <S.PokemonImage src={imageUrl} alt={pokemon.name} />
+                    <S.PokemonImage
+                      src={changeSprite ? spriteShiny : spriteDefault}
+                      alt={pokemon.name}
+                    />
                     <S.PokemonName>{pokemon.name}</S.PokemonName>
                     <S.PokemonId>#{pokemonId}</S.PokemonId>
                     {pokemon.details && (

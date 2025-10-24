@@ -77,3 +77,20 @@ export const ClearFiltersButton = styled.button`
     background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
+
+export const ChangeSpriteButton = styled.button`
+  padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
+  background-color: ${({ theme }) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  align-self: flex-end;
+  margin-left: ${({ theme }) => theme.spacing.medium};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+`;

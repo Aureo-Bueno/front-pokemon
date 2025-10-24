@@ -11,8 +11,7 @@ export default function Layout() {
       </S.Main>
       <S.Footer>
         <S.FooterText>
-          &copy; 2025 Pokédex App - Construído com Vite + TypeScript + React
-          Router
+          &copy; 2025 Pokédex App - Aureo Bueno
         </S.FooterText>
       </S.Footer>
     </S.LayoutContainer>
