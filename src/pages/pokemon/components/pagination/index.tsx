@@ -1,33 +1,24 @@
-import type { PokemonListResponse } from "../../../../types/pokemon";
 import * as S from "./styles";
 
 interface PaginationProps {
-  setOffset: React.Dispatch<React.SetStateAction<number>>;
-  offset: number;
-  data: PokemonListResponse | undefined;
+  canPrevious: boolean;
+  canNext: boolean;
+  onPrevious: () => void;
+  onNext: () => void;
 }
 
-export function Pagination({ setOffset, offset, data }: PaginationProps) {
-  const handleNextPage = () => {
-    if (data?.next) {
-      setOffset(offset + 100);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (data?.previous && offset >= 100) {
-      setOffset(offset - 100);
-    }
-  };
+export function Pagination({
+  canPrevious,
+  canNext,
+  onPrevious,
+  onNext,
+}: Readonly<PaginationProps>) {
   return (
     <S.PaginationContainer>
-      <S.PaginationButton
-        $disabled={!data?.previous}
-        onClick={handlePreviousPage}
-      >
+      <S.PaginationButton $disabled={!canPrevious} onClick={onPrevious}>
         ← Anterior
       </S.PaginationButton>
-      <S.PaginationButton $disabled={!data?.next} onClick={handleNextPage}>
+      <S.PaginationButton $disabled={!canNext} onClick={onNext}>
         Próximo →
       </S.PaginationButton>
     </S.PaginationContainer>

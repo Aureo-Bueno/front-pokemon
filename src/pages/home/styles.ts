@@ -16,8 +16,34 @@ export const HomeTitle = styled.h1`
 
 export const HomeDescription = styled.p`
   font-size: 20px;
-  margin-bottom: ${({ theme }) => theme.spacing.xxlarge};
+  margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   color: ${({ theme }) => theme.colors.textLight};
+`;
+
+export const HomeDetailsCard = styled.section`
+  max-width: 900px;
+  margin: 0 auto ${({ theme }) => theme.spacing.xxlarge};
+  padding: ${({ theme }) => theme.spacing.xlarge};
+  text-align: left;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  box-shadow: ${({ theme }) => theme.shadows.light};
+`;
+
+export const HomeDetailsTitle = styled.h2`
+  margin-bottom: ${({ theme }) => theme.spacing.medium};
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const HomeDetailsList = styled.ul`
+  padding-left: ${({ theme }) => theme.spacing.xlarge};
+  color: ${({ theme }) => theme.colors.text};
+  line-height: 1.6;
+`;
+
+export const HomeDetailsItem = styled.li`
+  margin-bottom: ${({ theme }) => theme.spacing.small};
 `;
 
 export const HomeButton = styled(Link)`
@@ -33,4 +59,11 @@ export const HomeButton = styled(Link)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }
+`;
+
+export const HomeButtons = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.medium};
+  justify-content: center;
+  flex-wrap: wrap;
 `;

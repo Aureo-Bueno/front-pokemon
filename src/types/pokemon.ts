@@ -48,4 +48,36 @@ export interface PokemonDetails {
       url: string;
     };
   }>;
+  moves: Array<{
+    move: {
+      name: string;
+      url: string;
+    };
+  }>;
+}
+
+export interface PokemonSpeciesResponse {
+  generation: {
+    name: string;
+    url: string;
+  };
+  flavor_text_entries: Array<{
+    flavor_text: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }>;
+}
+
+export interface TypeListResponse {
+  count: number
+  next: string
+  previous: string| null
+  results: TypePokemon[]
+}
+
+export interface TypePokemon {
+  name: string
+  url: string
 }

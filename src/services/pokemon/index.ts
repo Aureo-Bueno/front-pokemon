@@ -1,7 +1,14 @@
 import axiosInstance from "../../api/axios";
-import type { PokemonDetails, PokemonListResponse } from "../../types/pokemon";
+import type { NatureResponse } from "../../types/nature";
+import type {
+  PokemonDetails,
+  PokemonListResponse,
+  PokemonSpeciesResponse,
+  TypeListResponse,
+} from "../../types/pokemon";
+import type { IPokemonService } from "./types";
 
-export const pokemonService = {
+export const pokemonService: IPokemonService = {
   getPokemonList: async (
     limit = 20,
     offset = 0
@@ -21,13 +28,27 @@ export const pokemonService = {
     return response.data;
   },
 
-  getPokemonByType: async (type: string) => {
-    const response = await axiosInstance.get(`/type/${type}`);
+  getPokemonSpecies: async (
+    nameOrId: string | number
+  ): Promise<PokemonSpeciesResponse> => {
+    const response = await axiosInstance.get<PokemonSpeciesResponse>(
+      `/pokemon-species/${nameOrId}`
+    );
     return response.data;
   },
 
-  getAllTypes: async () => {
-    const response = await axiosInstance.get("/type");
+  getPokemonByType: async (type: string): Promise<TypeListResponse> => {
+    const response = await axiosInstance.get<TypeListResponse>(`/type/${type}`);
+    return response.data;
+  },
+
+  getAllTypes: async (): Promise<TypeListResponse> => {
+    const response = await axiosInstance.get<TypeListResponse>("/type");
+    return response.data;
+  },
+
+  getNaturePokemonById: async (id: string): Promise<NatureResponse> => {
+    const response = await axiosInstance.get<NatureResponse>(`/nature/${id}`);
     return response.data;
   },
 };

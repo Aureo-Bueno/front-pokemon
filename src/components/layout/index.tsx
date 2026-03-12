@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Navigation from "../navigation";
 import * as S from "./styles";
+import type { JSX } from "react";
+import { Navigation } from "../navigation";
 
-export default function Layout() {
+export function Layout(): JSX.Element {
   return (
     <S.LayoutContainer>
       <Navigation />
@@ -10,9 +11,7 @@ export default function Layout() {
         <Outlet />
       </S.Main>
       <S.Footer>
-        <S.FooterText>
-          &copy; 2025 Pokédex App - Aureo Bueno
-        </S.FooterText>
+        <S.FooterText>&copy; 2025 Pokédex App - Aureo Bueno</S.FooterText>
       </S.Footer>
     </S.LayoutContainer>
   );

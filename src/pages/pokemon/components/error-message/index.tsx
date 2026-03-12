@@ -1,6 +1,9 @@
+import type { JSX } from "react";
 import * as S from "./styles";
 
-export function ErrorMessage({ error }: { error: Error | null }) {
+export function ErrorMessage({
+  error,
+}: Readonly<{ error: Error | null }>): JSX.Element {
   return (
     <S.Container>
       <S.Title style={{ color: "red" }}>Erro ao carregar Pokémon</S.Title>

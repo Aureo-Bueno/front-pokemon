@@ -1,4 +1,4 @@
-import { useMemo, type Dispatch } from "react";
+import { useMemo, type Dispatch, type JSX } from "react";
 import { pokemonService } from "../../../../services/pokemon";
 import * as S from "./styles";
 import type {
@@ -15,10 +15,23 @@ interface PokemonListProps {
   searchName: string;
   selectedType: string;
   selectedHeight: string;
+  selectedGeneration: string;
   handleClearFilters: () => void;
   isLoading: boolean;
   isLoadingDetails: boolean;
   changeSprite: boolean;
+}
+
+function getGenerationByPokemonId(id: number): string {
+  if (id <= 151) return "gen-i";
+  if (id <= 251) return "gen-ii";
+  if (id <= 386) return "gen-iii";
+  if (id <= 493) return "gen-iv";
+  if (id <= 649) return "gen-v";
+  if (id <= 721) return "gen-vi";
+  if (id <= 809) return "gen-vii";
+  if (id <= 905) return "gen-viii";
+  return "gen-ix";
 }
 
 export function List({
@@ -28,11 +41,12 @@ export function List({
   searchName,
   selectedType,
   selectedHeight,
+  selectedGeneration,
   handleClearFilters,
   isLoading,
   isLoadingDetails,
   changeSprite,
-}: PokemonListProps) {
+}: Readonly<PokemonListProps>): JSX.Element {
   const limit = 20;
 
   const handlePokemonClick = async (name: string) => {
@@ -57,7 +71,7 @@ export function List({
 
       if (selectedType && pokemon.details) {
         const hasType = pokemon.details.types.some(
-          (t) => t.type.name === selectedType
+          (t) => t.type.name === selectedType,
         );
         if (!hasType) return false;
       }
@@ -74,9 +88,20 @@ export function List({
         if (selectedHeight === "large" && heightInMeters <= 1.5) return false;
       }
 
+      if (selectedGeneration && pokemon.details) {
+        const pokemonGeneration = getGenerationByPokemonId(pokemon.details.id);
+        if (pokemonGeneration !== selectedGeneration) return false;
+      }
+
       return true;
     });
-  }, [pokemonWithDetails, searchName, selectedType, selectedHeight]);
+  }, [
+    pokemonWithDetails,
+    searchName,
+    selectedType,
+    selectedHeight,
+    selectedGeneration,
+  ]);
 
   return (
     <>
@@ -88,6 +113,7 @@ export function List({
             <S.PokemonGrid>
               {filteredPokemon.slice(0, limit).map((pokemon) => {
                 if (!pokemon.details) return null;
+                const details = pokemon.details;
 
                 const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
                 const spriteDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
@@ -104,22 +130,16 @@ export function List({
                     />
                     <S.PokemonName>{pokemon.name}</S.PokemonName>
                     <S.PokemonId>#{pokemonId}</S.PokemonId>
-                    {pokemon.details && (
-                      <div
-                        style={{
-                          fontSize: "12px",
-                          color: "#666",
-                          marginTop: "8px",
-                        }}
-                      >
-                        <div>
-                          {pokemon.details.types
-                            .map((t) => t.type.name)
-                            .join(", ")}
-                        </div>
-                        <div>{pokemon.details.height / 10}m</div>
-                      </div>
-                    )}
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#666",
+                        marginTop: "8px",
+                      }}
+                    >
+                      <div>{details.types.map((t) => t.type.name).join(", ")}</div>
+                      <div>{details.height / 10}m</div>
+                    </div>
                   </S.PokemonCard>
                 );
               })}

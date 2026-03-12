@@ -3,6 +3,7 @@ import { Router } from "./routes";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
 import { GlobalStyle } from "./styles/global";
+import type { JSX } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,7 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export function App() {
+export function App(): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

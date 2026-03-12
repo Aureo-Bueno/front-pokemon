@@ -17,8 +17,8 @@ export const ModalContent = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing.xxlarge};
   border-radius: ${({ theme }) => theme.borderRadius.large};
-  max-width: 500px;
-  max-height: 80vh;
+  width: min(92vw, 720px);
+  max-height: 90vh;
   overflow: auto;
 `;
 
@@ -55,7 +55,7 @@ export const ModalStatItem = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  margin-top: ${({ theme }) => theme.spacing.xlarge};
+  margin-top: ${({ theme }) => theme.spacing.medium};
   padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondary};
@@ -66,5 +66,20 @@ export const CloseButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
+  }
+`;
+
+export const RedirectButton = styled.button`
+  margin-top: ${({ theme }) => theme.spacing.xlarge};
+  padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
   }
 `;
