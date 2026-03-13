@@ -1,3 +1,8 @@
+/**
+ * @file src/routes/index.tsx
+ * Application routing configuration.
+ */
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import type { JSX } from "react";
 import { Layout } from "../components/layout";
@@ -9,6 +14,9 @@ import { ItemPage } from "../pages/item";
 import { LocationPage } from "../pages/location";
 import { PokemonDetailPage } from "../pages/pokemon-detail";
 
+/**
+ * Browser router with all application routes and layout nesting.
+ */
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +51,9 @@ const router = createBrowserRouter([
   },
 ]);
 
+/**
+ * Renders the Router view component.
+ */
 export function Router(): JSX.Element {
   return <RouterProvider router={router} />;
 }

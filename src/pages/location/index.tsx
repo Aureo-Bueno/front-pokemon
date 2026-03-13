@@ -1,8 +1,16 @@
+/**
+ * @file src/pages/location/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import { useState, type FormEvent, type JSX } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { locationService } from "../../services/location";
 import * as S from "./styles";
 
+/**
+ * Helper function used by this page: getErrorMessage.
+ */
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -11,6 +19,9 @@ function getErrorMessage(error: unknown): string {
   return "Erro ao buscar localização.";
 }
 
+/**
+ * Renders the LocationPage view component.
+ */
 export function LocationPage(): JSX.Element {
   const [inputId, setInputId] = useState("1");
   const [locationId, setLocationId] = useState("1");

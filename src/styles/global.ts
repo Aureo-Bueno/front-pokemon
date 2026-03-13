@@ -1,5 +1,13 @@
+/**
+ * @file src/styles/global.ts
+ * Global CSS rules injected through styled-components.
+ */
+
 import { createGlobalStyle } from 'styled-components';
 
+/**
+ * Global baseline styles applied to the entire application.
+ */
 export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -18,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
+    overflow-x: hidden;
   }
 
   a {
@@ -33,5 +42,10 @@ export const GlobalStyle = createGlobalStyle`
 
   input, textarea, select {
     font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `;

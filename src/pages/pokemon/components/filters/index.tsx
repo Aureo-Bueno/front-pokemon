@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon/components/filters/index.tsx
+ * UI subcomponent used by the Pokemon list page.
+ */
+
 import type { Dispatch, JSX } from "react";
 import * as S from "./styles";
 
@@ -16,6 +21,9 @@ interface FiltersProps {
   changeSprite: boolean;
 }
 
+/**
+ * Renders the Filters view component.
+ */
 export function Filters({
   searchName,
   setSearchName,
@@ -95,14 +103,14 @@ export function Filters({
         </S.FilterGroup>
       </S.FiltersRow>
 
-      <div style={{ marginTop: "15px" }}>
+      <S.ActionsRow>
         <S.ClearFiltersButton onClick={handleClearFilters}>
           Limpar Filtros
         </S.ClearFiltersButton>
         <S.ChangeSpriteButton onClick={() => setChangeSprite(!changeSprite)}>
           Ver {changeSprite ? "Normal" : "Shiny"}
         </S.ChangeSpriteButton>
-      </div>
+      </S.ActionsRow>
     </S.FiltersContainer>
   );
 }

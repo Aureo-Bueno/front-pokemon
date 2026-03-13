@@ -1,3 +1,11 @@
+/**
+ * @file src/styles/theme.ts
+ * Theme tokens shared across the styled-components design system.
+ */
+
+/**
+ * Centralized design tokens used across all styled components.
+ */
 export const theme = {
   colors: {
     primary: '#333',
@@ -29,4 +37,7 @@ export const theme = {
   },
 };
 
+/**
+ * Type helper representing the theme object shape.
+ */
 export type Theme = typeof theme;

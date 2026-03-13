@@ -1,8 +1,16 @@
+/**
+ * @file src/pages/item/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import { useState, type FormEvent, type JSX } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { itemService } from "../../services/item";
 import * as S from "./styles";
 
+/**
+ * Helper function used by this page: getErrorMessage.
+ */
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -11,16 +19,25 @@ function getErrorMessage(error: unknown): string {
   return "Erro ao buscar item.";
 }
 
+/**
+ * Helper function used by this page: getEnglishEffect.
+ */
 function getEnglishEffect(entries: { language: { name: string }; effect: string }[]) {
   return entries.find((entry) => entry.language.name === "en")?.effect;
 }
 
+/**
+ * Helper function used by this page: getEnglishFlavor.
+ */
 function getEnglishFlavor(
   entries: { language: { name: string }; text: string }[],
 ): string | undefined {
   return entries.find((entry) => entry.language.name === "en")?.text;
 }
 
+/**
+ * Renders the ItemPage view component.
+ */
 export function ItemPage(): JSX.Element {
   const [inputId, setInputId] = useState("1");
   const [itemId, setItemId] = useState("1");

@@ -1,3 +1,8 @@
+/**
+ * @file src/styles/styled.d.ts
+ * Type augmentation for styled-components theme typing.
+ */
+
 import 'styled-components';
 
 declare module 'styled-components' {

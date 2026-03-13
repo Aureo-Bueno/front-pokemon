@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon/components/modal/index.tsx
+ * UI subcomponent used by the Pokemon list page.
+ */
+
 import { useQuery } from "@tanstack/react-query";
 import * as S from "./styles";
 import { pokemonService } from "../../../../services/pokemon";
@@ -12,6 +17,9 @@ interface ModalProps {
   changeSprite: boolean;
 }
 
+/**
+ * Renders the Modal view component.
+ */
 export function Modal({
   selectedPokemon,
   setSelectedPokemon,
@@ -52,9 +60,9 @@ export function Modal({
                 <strong>Tipos:</strong>{" "}
                 {pokemonDetails.types.map((t) => t.type.name).join(", ")}
               </S.ModalInfoItem>
-              <S.ModalInfoItem style={{ marginTop: "15px" }}>
+              <S.ModalStatsTitle>
                 <strong>Estatísticas:</strong>
-              </S.ModalInfoItem>
+              </S.ModalStatsTitle>
               {pokemonDetails.stats.map((stat) => (
                 <S.ModalStatItem key={stat.stat.name}>
                   {stat.stat.name}: {stat.base_stat}

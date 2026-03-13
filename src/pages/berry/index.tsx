@@ -1,8 +1,16 @@
+/**
+ * @file src/pages/berry/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import { useState, type FormEvent, type JSX } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { berryService } from "../../services/berry";
 import * as S from "./styles";
 
+/**
+ * Helper function used by this page: getErrorMessage.
+ */
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -11,6 +19,9 @@ function getErrorMessage(error: unknown): string {
   return "Erro ao buscar berry.";
 }
 
+/**
+ * Renders the BerryPage view component.
+ */
 export function BerryPage(): JSX.Element {
   const [inputId, setInputId] = useState("1");
   const [berryId, setBerryId] = useState("1");

@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon/components/pagination/index.tsx
+ * UI subcomponent used by the Pokemon list page.
+ */
+
 import * as S from "./styles";
 
 interface PaginationProps {
@@ -7,6 +12,9 @@ interface PaginationProps {
   onNext: () => void;
 }
 
+/**
+ * Renders the Pagination view component.
+ */
 export function Pagination({
   canPrevious,
   canNext,

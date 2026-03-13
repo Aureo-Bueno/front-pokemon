@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon-detail/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import { useMemo, type JSX } from "react";
 import { useParams } from "react-router-dom";
 import { useQueries, useQuery } from "@tanstack/react-query";
@@ -6,6 +11,9 @@ import { movesService } from "../../services/move";
 import type { MoveResponse } from "../../types/move";
 import * as S from "./styles";
 
+/**
+ * Helper function used by this page: getErrorMessage.
+ */
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -14,14 +22,23 @@ function getErrorMessage(error: unknown): string {
   return "Erro ao buscar detalhes do Pokémon.";
 }
 
+/**
+ * Helper function used by this page: normalizeText.
+ */
 function normalizeText(text: string): string {
   return text.replaceAll("\n", " ").replaceAll("\f", " ");
 }
 
+/**
+ * Helper function used by this page: isMoveResponse.
+ */
 function isMoveResponse(move: MoveResponse | undefined): move is MoveResponse {
   return Boolean(move);
 }
 
+/**
+ * Helper function used by this page: getGenerationRegionLabel.
+ */
 function getGenerationRegionLabel(generationName: string): string {
   const generationRegionMap: Record<string, string> = {
     "generation-i": "Kanto",
@@ -38,6 +55,9 @@ function getGenerationRegionLabel(generationName: string): string {
   return generationRegionMap[generationName] ?? "Região desconhecida";
 }
 
+/**
+ * Renders the PokemonDetailPage view component.
+ */
 export function PokemonDetailPage(): JSX.Element {
   const { id } = useParams<{ id: string }>();
 

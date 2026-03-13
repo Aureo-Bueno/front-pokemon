@@ -1,3 +1,8 @@
+/**
+ * @file src/services/pokemon/types.ts
+ * Service contract types for a specific domain module.
+ */
+
 import type { NatureResponse } from "../../types/nature";
 import type {
   PokemonDetails,
@@ -6,6 +11,9 @@ import type {
   TypeListResponse,
 } from "../../types/pokemon";
 
+/**
+ * Represents the IPokemonService data structure.
+ */
 export interface IPokemonService {
   getPokemonList(limit?: number, offset?: number): Promise<PokemonListResponse>;
   getPokemonDetails(nameOrId: string | number): Promise<PokemonDetails>;

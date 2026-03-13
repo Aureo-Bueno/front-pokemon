@@ -1,3 +1,8 @@
+/**
+ * @file src/services/pokemon/index.ts
+ * Service methods that wrap PokeAPI requests for a specific domain.
+ */
+
 import axiosInstance from "../../api/axios";
 import type { NatureResponse } from "../../types/nature";
 import type {
@@ -8,6 +13,9 @@ import type {
 } from "../../types/pokemon";
 import type { IPokemonService } from "./types";
 
+/**
+ * Service implementation for Pokemon-related API resources.
+ */
 export const pokemonService: IPokemonService = {
   getPokemonList: async (
     limit = 20,

@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon/components/list/index.tsx
+ * UI subcomponent used by the Pokemon list page.
+ */
+
 import { useMemo, type Dispatch, type JSX } from "react";
 import { pokemonService } from "../../../../services/pokemon";
 import * as S from "./styles";
@@ -22,6 +27,9 @@ interface PokemonListProps {
   changeSprite: boolean;
 }
 
+/**
+ * Helper function used by this page: getGenerationByPokemonId.
+ */
 function getGenerationByPokemonId(id: number): string {
   if (id <= 151) return "gen-i";
   if (id <= 251) return "gen-ii";
@@ -34,6 +42,9 @@ function getGenerationByPokemonId(id: number): string {
   return "gen-ix";
 }
 
+/**
+ * Renders the List view component.
+ */
 export function List({
   setSelectedPokemon,
   data,
@@ -130,16 +141,12 @@ export function List({
                     />
                     <S.PokemonName>{pokemon.name}</S.PokemonName>
                     <S.PokemonId>#{pokemonId}</S.PokemonId>
-                    <div
-                      style={{
-                        fontSize: "12px",
-                        color: "#666",
-                        marginTop: "8px",
-                      }}
-                    >
-                      <div>{details.types.map((t) => t.type.name).join(", ")}</div>
-                      <div>{details.height / 10}m</div>
-                    </div>
+                    <S.PokemonMeta>
+                      <S.PokemonMetaLine>
+                        {details.types.map((t) => t.type.name).join(", ")}
+                      </S.PokemonMetaLine>
+                      <S.PokemonMetaLine>{details.height / 10}m</S.PokemonMetaLine>
+                    </S.PokemonMeta>
                   </S.PokemonCard>
                 );
               })}

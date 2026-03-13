@@ -1,6 +1,14 @@
+/**
+ * @file src/components/navigation/index.tsx
+ * Reusable UI component implementation.
+ */
+
 import type { JSX } from "react";
 import * as S from "./styles";
 
+/**
+ * Renders the Navigation view component.
+ */
 export function Navigation(): JSX.Element {
   return (
     <S.Nav>

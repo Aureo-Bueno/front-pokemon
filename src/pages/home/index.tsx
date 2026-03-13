@@ -1,6 +1,14 @@
+/**
+ * @file src/pages/home/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import type { JSX } from "react";
 import * as S from "./styles";
 
+/**
+ * Renders the Home view component.
+ */
 export function Home(): JSX.Element {
   return (
     <S.HomeContainer>

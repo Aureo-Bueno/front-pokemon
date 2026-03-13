@@ -1,3 +1,8 @@
+/**
+ * @file src/pages/pokemon/index.tsx
+ * Page component responsible for one route view.
+ */
+
 import { useState, type JSX } from "react";
 import { useQuery, useQueries } from "@tanstack/react-query";
 import type { PokemonDetails } from "../../types/pokemon";
@@ -27,6 +32,9 @@ const GENERATION_RANGES: Record<string, { start: number; end: number }> = {
   "gen-ix": { start: 906, end: 1025 },
 };
 
+/**
+ * Renders the PokemonList view component.
+ */
 export function PokemonList(): JSX.Element {
   const [offset, setOffset] = useState(0);
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonDetails | null>(

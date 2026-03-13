@@ -1,8 +1,19 @@
+/**
+ * @file src/types/pokemon.ts
+ * TypeScript models for PokeAPI response payloads.
+ */
+
+/**
+ * Represents the Pokemon data structure.
+ */
 export interface Pokemon {
   name: string;
   url: string;
 }
 
+/**
+ * Represents the PokemonListResponse data structure.
+ */
 export interface PokemonListResponse {
   count: number;
   next: string | null;
@@ -10,6 +21,9 @@ export interface PokemonListResponse {
   results: Pokemon[];
 }
 
+/**
+ * Represents the PokemonDetails data structure.
+ */
 export interface PokemonDetails {
   id: number;
   name: string;
@@ -56,6 +70,9 @@ export interface PokemonDetails {
   }>;
 }
 
+/**
+ * Represents the PokemonSpeciesResponse data structure.
+ */
 export interface PokemonSpeciesResponse {
   generation: {
     name: string;
@@ -70,6 +87,9 @@ export interface PokemonSpeciesResponse {
   }>;
 }
 
+/**
+ * Represents the TypeListResponse data structure.
+ */
 export interface TypeListResponse {
   count: number
   next: string
@@ -77,6 +97,9 @@ export interface TypeListResponse {
   results: TypePokemon[]
 }
 
+/**
+ * Represents the TypePokemon data structure.
+ */
 export interface TypePokemon {
   name: string
   url: string
