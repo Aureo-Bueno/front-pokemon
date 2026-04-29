@@ -154,9 +154,9 @@ export function List({
           ) : (
             <S.NoResultsContainer>
               <S.NoResultsText>
-                😞 Nenhum Pokémon encontrado com os filtros aplicados.
+                Nenhum Pokémon encontrado com os filtros aplicados.
               </S.NoResultsText>
-              <S.ClearFiltersButton onClick={handleClearFilters}>
+              <S.ClearFiltersButton type="button" onClick={handleClearFilters}>
                 Limpar Filtros
               </S.ClearFiltersButton>
             </S.NoResultsContainer>

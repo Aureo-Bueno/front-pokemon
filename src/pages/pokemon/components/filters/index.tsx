@@ -42,7 +42,7 @@ export function Filters({
     <S.FiltersContainer>
       <S.FiltersRow>
         <S.FilterGroup>
-          <S.FilterLabel htmlFor="search">🔍 Buscar por Nome</S.FilterLabel>
+          <S.FilterLabel htmlFor="search">Buscar por nome</S.FilterLabel>
           <S.FilterInput
             id="search"
             type="text"
@@ -53,7 +53,7 @@ export function Filters({
         </S.FilterGroup>
 
         <S.FilterGroup>
-          <S.FilterLabel htmlFor="type">⚡ Filtrar por Tipo</S.FilterLabel>
+          <S.FilterLabel htmlFor="type">Filtrar por tipo</S.FilterLabel>
           <S.FilterSelect
             id="type"
             value={selectedType}
@@ -69,7 +69,7 @@ export function Filters({
         </S.FilterGroup>
 
         <S.FilterGroup>
-          <S.FilterLabel htmlFor="height">📏 Filtrar por Altura</S.FilterLabel>
+          <S.FilterLabel htmlFor="height">Filtrar por altura</S.FilterLabel>
           <S.FilterSelect
             id="height"
             value={selectedHeight}
@@ -83,7 +83,7 @@ export function Filters({
         </S.FilterGroup>
 
         <S.FilterGroup>
-          <S.FilterLabel htmlFor="generation">🧬 Filtrar por Geração</S.FilterLabel>
+          <S.FilterLabel htmlFor="generation">Filtrar por geração</S.FilterLabel>
           <S.FilterSelect
             id="generation"
             value={selectedGeneration}
@@ -104,10 +104,13 @@ export function Filters({
       </S.FiltersRow>
 
       <S.ActionsRow>
-        <S.ClearFiltersButton onClick={handleClearFilters}>
+        <S.ClearFiltersButton type="button" onClick={handleClearFilters}>
           Limpar Filtros
         </S.ClearFiltersButton>
-        <S.ChangeSpriteButton onClick={() => setChangeSprite(!changeSprite)}>
+        <S.ChangeSpriteButton
+          type="button"
+          onClick={() => setChangeSprite(!changeSprite)}
+        >
           Ver {changeSprite ? "Normal" : "Shiny"}
         </S.ChangeSpriteButton>
       </S.ActionsRow>

@@ -10,12 +10,11 @@ import { Link } from "react-router-dom";
  * Styled component: Container.
  */
 export const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing.xlarge};
-  max-width: 1000px;
-  margin: 0 auto;
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.large};
 
   @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.medium};
+    gap: ${({ theme }) => theme.spacing.medium};
   }
 `;
 
@@ -23,19 +22,31 @@ export const Container = styled.div`
  * Styled component: BackLink.
  */
 export const BackLink = styled(Link)`
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.large};
-  color: ${({ theme }) => theme.colors.tertiary};
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.medium}`};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: rgba(255, 255, 255, 0.02);
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 600;
+  transition: transform 180ms ease, background-color 180ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.04);
+  }
 `;
 
 /**
  * Styled component: Card.
  */
 export const Card = styled.section`
-  background-color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  border-radius: ${({ theme }) => theme.borderRadius.xlarge};
   box-shadow: ${({ theme }) => theme.shadows.light};
   padding: ${({ theme }) => theme.spacing.xlarge};
 
@@ -53,6 +64,8 @@ export const Header = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: ${({ theme }) => theme.spacing.xlarge};
+  padding-bottom: ${({ theme }) => theme.spacing.large};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -65,12 +78,13 @@ export const Header = styled.div`
  * Styled component: Sprite.
  */
 export const Sprite = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 18px 35px rgba(2, 8, 23, 0.35));
 
   @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
   }
 `;
 
@@ -81,7 +95,8 @@ export const Title = styled.h1`
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${({ theme }) => theme.spacing.small};
-  font-size: clamp(28px, 4vw, 36px);
+  font-size: clamp(30px, 4vw, 42px);
+  letter-spacing: -0.03em;
 `;
 
 /**
@@ -99,6 +114,8 @@ export const Row = styled.p`
 export const Description = styled.p`
   color: ${({ theme }) => theme.colors.textLight};
   margin: ${({ theme }) => `${theme.spacing.medium} 0 ${theme.spacing.xlarge}`};
+  font-size: 16px;
+  line-height: 1.7;
 `;
 
 /**
@@ -106,6 +123,8 @@ export const Description = styled.p`
  */
 export const Subtitle = styled.h2`
   margin: ${({ theme }) => `${theme.spacing.xlarge} 0 ${theme.spacing.medium}`};
+  font-size: 22px;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 /**
@@ -113,14 +132,18 @@ export const Subtitle = styled.h2`
  */
 export const MovesList = styled.ul`
   list-style: none;
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.medium};
 `;
 
 /**
  * Styled component: MoveItem.
  */
 export const MoveItem = styled.li`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding: ${({ theme }) => theme.spacing.medium} 0;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  padding: ${({ theme }) => theme.spacing.large};
+  background: rgba(255, 255, 255, 0.02);
   overflow-wrap: anywhere;
 `;
 
@@ -130,6 +153,7 @@ export const MoveItem = styled.li`
 export const MoveName = styled.h3`
   text-transform: capitalize;
   margin-bottom: ${({ theme }) => theme.spacing.small};
+  font-size: 18px;
 `;
 
 /**
@@ -138,6 +162,7 @@ export const MoveName = styled.h3`
 export const Feedback = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.colors.textLight};
+  padding: ${({ theme }) => theme.spacing.medium} 0;
 `;
 
 /**

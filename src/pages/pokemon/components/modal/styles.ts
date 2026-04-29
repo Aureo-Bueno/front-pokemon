@@ -14,7 +14,7 @@ export const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(2, 6, 23, 0.74);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,12 +26,14 @@ export const ModalOverlay = styled.div`
  * Styled component: ModalContent.
  */
 export const ModalContent = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.surfaceStrong};
   padding: ${({ theme }) => theme.spacing.xxlarge};
-  border-radius: ${({ theme }) => theme.borderRadius.large};
+  border-radius: ${({ theme }) => theme.borderRadius.xlarge};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   width: min(92vw, 720px);
   max-height: 90vh;
   overflow: auto;
+  box-shadow: ${({ theme }) => theme.shadows.medium};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -47,9 +49,9 @@ export const ModalTitle = styled.h2`
   text-align: center;
   margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   color: ${({ theme }) => theme.colors.text};
+  font-size: clamp(26px, 4vw, 36px);
 
   @media (max-width: 768px) {
-    font-size: 24px;
     margin-bottom: ${({ theme }) => theme.spacing.large};
   }
 `;
@@ -58,12 +60,13 @@ export const ModalTitle = styled.h2`
  * Styled component: ModalImage.
  */
 export const ModalImage = styled.img`
-  width: 200px;
+  width: min(240px, 70vw);
   display: block;
   margin: 0 auto;
+  filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.18));
 
   @media (max-width: 768px) {
-    width: 140px;
+    width: min(180px, 60vw);
   }
 `;
 
@@ -91,7 +94,11 @@ export const ModalInfoItem = styled.p`
  * Styled component: ModalStatItem.
  */
 export const ModalStatItem = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.medium};
+  margin-top: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.medium};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid ${({ theme }) => theme.colors.border};
   color: ${({ theme }) => theme.colors.text};
   text-transform: capitalize;
 `;
@@ -110,14 +117,17 @@ export const CloseButton = styled.button`
   margin-top: ${({ theme }) => theme.spacing.medium};
   padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.02);
   color: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 180ms ease, background-color 180ms ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.04);
   }
 `;
 
@@ -128,13 +138,16 @@ export const RedirectButton = styled.button`
   margin-top: ${({ theme }) => theme.spacing.xlarge};
   padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  min-height: 44px;
+  background: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
   cursor: pointer;
-  transition: opacity 0.2s;
+  border: none;
+  transition: transform 180ms ease, opacity 180ms ease;
 
   &:hover {
-    opacity: 0.9;
+    transform: translateY(-1px);
+    background: ${({ theme }) => theme.colors.primaryHover};
   }
 `;

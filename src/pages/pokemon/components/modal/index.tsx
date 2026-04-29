@@ -74,6 +74,7 @@ export function Modal({
 
         {pokemonDetails && !isLoading && (
           <S.RedirectButton
+            type="button"
             onClick={() => {
               navigate(`/pokemons/${pokemonDetails.id}`);
               setSelectedPokemon(null);
@@ -83,7 +84,7 @@ export function Modal({
           </S.RedirectButton>
         )}
 
-        <S.CloseButton onClick={() => setSelectedPokemon(null)}>
+        <S.CloseButton type="button" onClick={() => setSelectedPokemon(null)}>
           Fechar
         </S.CloseButton>
       </S.ModalContent>

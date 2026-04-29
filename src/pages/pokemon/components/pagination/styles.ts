@@ -12,10 +12,12 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.xlarge};
+  padding-bottom: ${({ theme }) => theme.spacing.xlarge};
 
   @media (max-width: 768px) {
     width: 100%;
     gap: ${({ theme }) => theme.spacing.medium};
+    padding-bottom: 0;
   }
 `;
 
@@ -27,19 +29,24 @@ interface ButtonProps {
  * Styled component: PaginationButton.
  */
 export const PaginationButton = styled.button<ButtonProps>`
+  min-height: 44px;
   padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.xlarge}`};
   font-size: 16px;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  background-color: ${({ theme, $disabled }) =>
-    $disabled ? theme.colors.border : theme.colors.tertiary};
+  background: ${({ theme, $disabled }) =>
+    $disabled ? "rgba(255, 255, 255, 0.02)" : theme.colors.primary};
   color: ${({ theme, $disabled }) =>
     $disabled ? theme.colors.textLight : theme.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-  transition: background-color 0.2s;
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 
   &:hover {
-    background-color: ${({ theme, $disabled }) =>
-      !$disabled && theme.colors.secondary};
+    transform: ${({ $disabled }) => ($disabled ? "none" : "translateY(-1px)")};
+    border-color: ${({ theme, $disabled }) =>
+      $disabled ? theme.colors.border : theme.colors.borderStrong};
+    background: ${({ theme, $disabled }) =>
+      $disabled ? "rgba(255, 255, 255, 0.02)" : theme.colors.primaryHover};
   }
 
   @media (max-width: 768px) {

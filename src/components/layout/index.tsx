@@ -12,6 +12,8 @@ import { Navigation } from "../navigation";
  * Renders the Layout view component.
  */
 export function Layout(): JSX.Element {
+  const currentYear = new Date().getFullYear();
+
   return (
     <S.LayoutContainer>
       <Navigation />
@@ -19,7 +21,9 @@ export function Layout(): JSX.Element {
         <Outlet />
       </S.Main>
       <S.Footer>
-        <S.FooterText>&copy; 2025 Pokédex App - Aureo Bueno</S.FooterText>
+        <S.FooterText>
+          &copy; {currentYear} Pokédex App - Aureo Bueno
+        </S.FooterText>
       </S.Footer>
     </S.LayoutContainer>
   );

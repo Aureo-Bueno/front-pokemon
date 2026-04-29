@@ -32,6 +32,18 @@ const GENERATION_RANGES: Record<string, { start: number; end: number }> = {
   "gen-ix": { start: 906, end: 1025 },
 };
 
+const GENERATION_LABELS: Record<string, string> = {
+  "gen-i": "GEN I",
+  "gen-ii": "GEN II",
+  "gen-iii": "GEN III",
+  "gen-iv": "GEN IV",
+  "gen-v": "GEN V",
+  "gen-vi": "GEN VI",
+  "gen-vii": "GEN VII",
+  "gen-viii": "GEN VIII",
+  "gen-ix": "GEN IX",
+};
+
 /**
  * Renders the PokemonList view component.
  */
@@ -113,11 +125,20 @@ export function PokemonList(): JSX.Element {
   const canNext = generationCount ? offset + 20 < generationCount : Boolean(data?.next);
 
   const isLoadingDetails = pokemonDetailsQueries.some((q) => q.isLoading);
+  const selectedGenerationLabel = selectedGeneration
+    ? GENERATION_LABELS[selectedGeneration]
+    : undefined;
 
   return (
-      <S.Container>
-      <S.Title>Pokédex - Lista de Pokémon</S.Title>
-      <S.InfoText>Total de Pokémon: {generationCount ?? data?.count}</S.InfoText>
+    <S.Container>
+      <S.PageHero>
+        <S.PageEyebrow>Catálogo principal</S.PageEyebrow>
+        <S.Title>Pokédex - Lista de Pokémon</S.Title>
+        <S.InfoText>
+          Total de Pokémon: {generationCount ?? data?.count}
+          {selectedGenerationLabel ? ` • Foco em ${selectedGenerationLabel}` : ""}
+        </S.InfoText>
+      </S.PageHero>
 
       <Filters
         searchName={searchName}

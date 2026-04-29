@@ -4,40 +4,23 @@
  */
 
 import type { JSX } from "react";
-import { Link } from "react-router-dom";
+import * as S from "./styles";
 
 /**
  * Renders the NotFound view component.
  */
 export function NotFound(): JSX.Element {
   return (
-    <div
-      style={{
-        textAlign: "center",
-        padding: "60px 20px",
-        minHeight: "calc(100vh - 200px)",
-      }}
-    >
-      <h1 style={{ fontSize: "clamp(36px, 10vw, 48px)", marginBottom: "20px" }}>
-        404
-      </h1>
-      <p style={{ fontSize: "clamp(16px, 4vw, 20px)", marginBottom: "30px", color: "#666" }}>
-        Página não encontrada
-      </p>
-      <Link
-        to="/"
-        style={{
-          display: "inline-block",
-          padding: "12px 24px",
-          fontSize: "16px",
-          backgroundColor: "#007bff",
-          color: "white",
-          textDecoration: "none",
-          borderRadius: "8px",
-        }}
-      >
-        Voltar para Home
-      </Link>
-    </div>
+    <S.Container>
+      <S.Card>
+        <S.Code>404</S.Code>
+        <S.Title>Página não encontrada</S.Title>
+        <S.Description>
+          A rota solicitada não existe ou foi movida. Volte para a home e siga
+          explorando a Pokédex.
+        </S.Description>
+        <S.Action to="/">Voltar para Home</S.Action>
+      </S.Card>
+    </S.Container>
   );
 }

@@ -12,11 +12,44 @@ import * as S from "./styles";
 export function Home(): JSX.Element {
   return (
     <S.HomeContainer>
-      <S.HomeTitle>Bem-vindo à Pokédex</S.HomeTitle>
-      <S.HomeDescription>
-        Explore dados da PokeAPI em uma interface única com busca, filtros e
-        páginas de detalhe.
-      </S.HomeDescription>
+      <S.HomeHero>
+        <S.HomeEyebrow>Pokédex interface</S.HomeEyebrow>
+        <S.HomeTitle>Uma Pokédex com presença visual mais forte.</S.HomeTitle>
+        <S.HomeDescription>
+          Explore Pokémon, berries, items e locations em uma experiência mais
+          limpa, contrastada e confortável de navegar.
+        </S.HomeDescription>
+
+        <S.HomeButtons>
+          <S.HomeButton $variant="primary" to="/pokemons">
+            Ver Pokémons
+          </S.HomeButton>
+          <S.HomeButton $variant="secondary" to="/berries">
+            Ver Berries
+          </S.HomeButton>
+          <S.HomeButton $variant="secondary" to="/items">
+            Ver Items
+          </S.HomeButton>
+          <S.HomeButton $variant="secondary" to="/locations">
+            Ver Locations
+          </S.HomeButton>
+        </S.HomeButtons>
+
+        <S.HomeStats>
+          <S.HomeStat>
+            <strong>Lista + filtros</strong>
+            <span>Busca, geração, tipo, altura e sprites.</span>
+          </S.HomeStat>
+          <S.HomeStat>
+            <strong>Detalhe rico</strong>
+            <span>Descrição, nature, movimentos e stats.</span>
+          </S.HomeStat>
+          <S.HomeStat>
+            <strong>Consultas rápidas</strong>
+            <span>Berries, items e locations por ID.</span>
+          </S.HomeStat>
+        </S.HomeStats>
+      </S.HomeHero>
 
       <S.HomeDetailsCard>
         <S.HomeDetailsTitle>O que esta aplicação faz</S.HomeDetailsTitle>
@@ -26,26 +59,19 @@ export function Home(): JSX.Element {
             altura.
           </S.HomeDetailsItem>
           <S.HomeDetailsItem>
-            Abre modal com resumo do Pokémon selecionado (imagem, tipos, peso,
-            altura e stats).
+            Abre modal com resumo do Pokémon selecionado, incluindo imagem,
+            tipos, peso, altura e stats.
           </S.HomeDetailsItem>
           <S.HomeDetailsItem>
             Permite navegar para uma página completa do Pokémon com descrição,
-            geração de introdução, nature e movimentos com detalhes.
+            geração de introdução, nature e movimentos.
           </S.HomeDetailsItem>
           <S.HomeDetailsItem>
             Possui páginas dedicadas para consultar Berries, Items e Locations
-            por ID, exibindo seus dados principais.
+            por ID.
           </S.HomeDetailsItem>
         </S.HomeDetailsList>
       </S.HomeDetailsCard>
-
-      <S.HomeButtons>
-        <S.HomeButton to="/pokemons">Ver Pokémons</S.HomeButton>
-        <S.HomeButton to="/berries">Ver Berries</S.HomeButton>
-        <S.HomeButton to="/items">Ver Items</S.HomeButton>
-        <S.HomeButton to="/locations">Ver Locations</S.HomeButton>
-      </S.HomeButtons>
     </S.HomeContainer>
   );
 }

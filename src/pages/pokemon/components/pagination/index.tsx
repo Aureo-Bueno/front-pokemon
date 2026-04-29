@@ -23,10 +23,18 @@ export function Pagination({
 }: Readonly<PaginationProps>) {
   return (
     <S.PaginationContainer>
-      <S.PaginationButton $disabled={!canPrevious} onClick={onPrevious}>
+      <S.PaginationButton
+        type="button"
+        $disabled={!canPrevious}
+        onClick={onPrevious}
+      >
         ← Anterior
       </S.PaginationButton>
-      <S.PaginationButton $disabled={!canNext} onClick={onNext}>
+      <S.PaginationButton
+        type="button"
+        $disabled={!canNext}
+        onClick={onNext}
+      >
         Próximo →
       </S.PaginationButton>
     </S.PaginationContainer>

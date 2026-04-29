@@ -9,12 +9,11 @@ import styled from "styled-components";
  * Styled component: Container.
  */
 export const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing.xlarge};
-  max-width: 900px;
-  margin: 0 auto;
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.large};
 
   @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.medium};
+    gap: ${({ theme }) => theme.spacing.medium};
   }
 `;
 
@@ -22,19 +21,18 @@ export const Container = styled.div`
  * Styled component: Title.
  */
 export const Title = styled.h1`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   color: ${({ theme }) => theme.colors.text};
-  font-size: clamp(28px, 4vw, 36px);
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
 `;
 
 /**
  * Styled component: Description.
  */
 export const Description = styled.p`
-  text-align: center;
   color: ${({ theme }) => theme.colors.textLight};
-  margin-bottom: ${({ theme }) => theme.spacing.xlarge};
+  line-height: 1.7;
+  max-width: 60ch;
 `;
 
 /**
@@ -43,9 +41,14 @@ export const Description = styled.p`
 export const Form = styled.form`
   display: flex;
   gap: ${({ theme }) => theme.spacing.medium};
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xlarge};
+  align-items: stretch;
+  margin-bottom: ${({ theme }) => theme.spacing.small};
   flex-wrap: wrap;
+  padding: ${({ theme }) => theme.spacing.large};
+  border-radius: ${({ theme }) => theme.borderRadius.xlarge};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: ${({ theme }) => theme.colors.surface};
+  box-shadow: ${({ theme }) => theme.shadows.light};
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -57,10 +60,13 @@ export const Form = styled.form`
  * Styled component: Input.
  */
 export const Input = styled.input`
-  width: 220px;
+  flex: 1;
+  min-height: 48px;
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-  padding: ${({ theme }) => theme.spacing.medium};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.large}`};
+  color: ${({ theme }) => theme.colors.text};
+  background: rgba(255, 255, 255, 0.02);
 
   @media (max-width: 768px) {
     width: 100%;
@@ -71,14 +77,18 @@ export const Input = styled.input`
  * Styled component: Button.
  */
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.secondary};
+  min-height: 48px;
+  background: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.large}`};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-  transition: background-color 0.2s;
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
+  transition: transform 180ms ease, opacity 180ms ease;
+  border: none;
+  box-shadow: none;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
+    transform: translateY(-1px);
+    background: ${({ theme }) => theme.colors.primaryHover};
   }
 
   @media (max-width: 768px) {
@@ -90,9 +100,9 @@ export const Button = styled.button`
  * Styled component: Card.
  */
 export const Card = styled.section`
-  background-color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  border-radius: ${({ theme }) => theme.borderRadius.xlarge};
   box-shadow: ${({ theme }) => theme.shadows.light};
   padding: ${({ theme }) => theme.spacing.xlarge};
 
@@ -107,6 +117,7 @@ export const Card = styled.section`
 export const CardTitle = styled.h2`
   margin-bottom: ${({ theme }) => theme.spacing.large};
   color: ${({ theme }) => theme.colors.text};
+  font-size: 24px;
 `;
 
 /**
@@ -116,6 +127,7 @@ export const Row = styled.p`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: ${({ theme }) => theme.spacing.small};
   overflow-wrap: anywhere;
+  line-height: 1.6;
 `;
 
 /**
@@ -123,6 +135,7 @@ export const Row = styled.p`
  */
 export const Subtitle = styled.h3`
   margin: ${({ theme }) => `${theme.spacing.xlarge} 0 ${theme.spacing.medium}`};
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 /**
@@ -136,7 +149,7 @@ export const List = styled.ul`
  * Styled component: ListItem.
  */
 export const ListItem = styled.li`
-  padding: ${({ theme }) => theme.spacing.small} 0;
+  padding: ${({ theme }) => `${theme.spacing.small} 0`};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
@@ -146,6 +159,7 @@ export const ListItem = styled.li`
 export const Feedback = styled.p`
   text-align: center;
   color: ${({ theme }) => theme.colors.textLight};
+  padding: ${({ theme }) => theme.spacing.medium} 0;
 `;
 
 /**

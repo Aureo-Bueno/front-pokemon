@@ -14,7 +14,7 @@ export function ErrorMessage({
 }: Readonly<{ error: Error | null }>): JSX.Element {
   return (
     <S.Container>
-      <S.Title style={{ color: "red" }}>Erro ao carregar Pokémon</S.Title>
+      <S.Title>Erro ao carregar Pokémon</S.Title>
       <S.InfoText>
         {error instanceof Error ? error.message : "Erro desconhecido"}
       </S.InfoText>

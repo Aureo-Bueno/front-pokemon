@@ -12,10 +12,16 @@ import * as S from "./styles";
 export function Navigation(): JSX.Element {
   return (
     <S.Nav>
-      <S.NavBrand to="/">🔴 Pokédex</S.NavBrand>
-
+      <S.NavBrand to="/">
+        <S.NavMark aria-hidden="true">
+          <span />
+        </S.NavMark>
+        <span>Pokédex</span>
+      </S.NavBrand>
       <S.NavLinks>
-        <S.NavLink to="/">Home</S.NavLink>
+        <S.NavLink to="/" end>
+          Home
+        </S.NavLink>
         <S.NavLink to="/pokemons">Pokémon</S.NavLink>
         <S.NavLink to="/berries">Berries</S.NavLink>
         <S.NavLink to="/items">Items</S.NavLink>

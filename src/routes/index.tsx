@@ -3,16 +3,51 @@
  * Application routing configuration.
  */
 
+import {
+  Suspense,
+  lazy,
+  type JSX,
+} from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import type { JSX } from "react";
 import { Layout } from "../components/layout";
-import { NotFound } from "../pages/not-found";
-import { Home } from "../pages/home";
-import { PokemonList } from "../pages/pokemon";
-import { BerryPage } from "../pages/berry";
-import { ItemPage } from "../pages/item";
-import { LocationPage } from "../pages/location";
-import { PokemonDetailPage } from "../pages/pokemon-detail";
+
+const LoadingFallback = () => (
+  <div style={{ padding: "32px 0", textAlign: "center", color: "#94a3b8" }}>
+    Carregando...
+  </div>
+);
+
+const Home = lazy(() =>
+  import("../pages/home").then((module) => ({ default: module.Home })),
+);
+
+const PokemonList = lazy(() =>
+  import("../pages/pokemon").then((module) => ({ default: module.PokemonList })),
+);
+
+const PokemonDetailPage = lazy(() =>
+  import("../pages/pokemon-detail").then((module) => ({
+    default: module.PokemonDetailPage,
+  })),
+);
+
+const BerryPage = lazy(() =>
+  import("../pages/berry").then((module) => ({ default: module.BerryPage })),
+);
+
+const ItemPage = lazy(() =>
+  import("../pages/item").then((module) => ({ default: module.ItemPage })),
+);
+
+const LocationPage = lazy(() =>
+  import("../pages/location").then((module) => ({
+    default: module.LocationPage,
+  })),
+);
+
+const NotFound = lazy(() =>
+  import("../pages/not-found").then((module) => ({ default: module.NotFound })),
+);
 
 /**
  * Browser router with all application routes and layout nesting.
@@ -55,5 +90,9 @@ const router = createBrowserRouter([
  * Renders the Router view component.
  */
 export function Router(): JSX.Element {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
